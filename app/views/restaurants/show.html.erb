@@ -1,0 +1,21 @@
+<div class="container m-3 text-center align-middle">
+  <div class="d-flex justify-content-center">
+    <h1><%= @restaurant.name %></h1>
+    <%= link_to 'Edit', edit_restaurant_path %>
+    <%= link_to 'Delete',
+                restaurant_path(@restaurant),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+  </div>
+  <p>Category: <%= @restaurant.category %></p>
+  <p>Address: <%= @restaurant.address %></p>
+  <p>Contact: <%= @restaurant.phone_number %></p>
+  <p class="btn btn-primary"><%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %></p>
+  <% @reviews.each do |review| %>
+    <div>
+      <p>Rating <%= review.rating %></p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+  <p class="btn btn-primary"><%= link_to 'Back', restaurants_path %></p>
+</div>
